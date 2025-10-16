@@ -1,19 +1,19 @@
 use_module(library(readutil)).
 
 preguntar_y_evaluar_puesta_huevos :-
-    writeln('¿Cuantas patas tiene? '),
+    writeln('Cuantas patas tiene '),
     read_line_to_string(user_input, PatasString),
     atom_number(PatasString, Patas),
     
-    writeln('¿Tiene pelos? (0 para no, 1 para si) '),
+    writeln('Tiene pelos (0 para no, 1 para si) '),
     read_line_to_string(user_input, PelosString),
     atom_number(PelosString, Pelos),
 
-    writeln('¿Tiene pulmones? (0 para no, 1 para si) '),
+    writeln('Tiene pulmones (0 para no, 1 para si) '),
     read_line_to_string(user_input, PulmonesString),
     atom_number(PulmonesString, Pulmones),
 
-    writeln('¿Tiene escamas? (0 para no, 1 para si) '),
+    writeln('Tiene escamas (0 para no, 1 para si) '),
     read_line_to_string(user_input, EscamasString),
     atom_number(EscamasString, Escamas),
    
