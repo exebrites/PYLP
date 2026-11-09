@@ -17,8 +17,10 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile.haskell_prolog
+    command: ["tail", "-f", "/dev/null"]
     volumes: 
       - ./unidad_4:/home
+      - ./unidad_5:/home/unidad_5
       - /home/javascript/node_modules
     ports: 
       - 3000:3000
