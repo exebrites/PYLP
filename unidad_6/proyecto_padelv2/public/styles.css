@@ -1,0 +1,415 @@
+/* Variables y configuración general */
+
+:root {
+  color-scheme: light;
+
+  --fondo: #f3f6fa;
+  --superficie: #ffffff;
+  --texto: #17243b;
+  --texto-secundario: #526176;
+  --borde: #cbd5e1;
+
+  --primario: #1d4ed8;
+  --primario-hover: #1e40af;
+  --primario-suave: #eff6ff;
+
+  --peligro: #b91c1c;
+  --peligro-hover: #991b1b;
+
+  --radio: 14px;
+  --sombra: 0 10px 30px rgb(15 23 42 / 7%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  width: min(100% - 40px, 1050px);
+  margin: 0 auto;
+  padding: 48px 0;
+
+  background: var(--fondo);
+  color: var(--texto);
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Mantiene ocultas las secciones controladas por JavaScript. */
+
+[hidden] {
+  display: none !important;
+}
+
+/* Títulos y textos */
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  margin: 0 0 18px;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  margin: 0 0 20px;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  margin: 0 0 20px;
+  font-size: 1.15rem;
+}
+
+p {
+  margin: 0 0 18px;
+}
+
+#estado {
+  margin-bottom: 28px;
+  color: var(--texto-secundario);
+}
+
+#usuario-email {
+  color: var(--primario);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* Contenedores principales */
+
+#acceso,
+#panel {
+  padding: 32px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+#acceso {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+hr {
+  height: 1px;
+  margin: 30px 0;
+  border: 0;
+  background: var(--borde);
+}
+
+/* Formularios */
+
+form {
+  margin: 0;
+}
+
+/* El espaciado se controla con CSS, no con los <br> existentes. */
+
+form > br {
+  display: none;
+}
+
+#form-acceso {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 14px;
+}
+
+#form-acceso > div {
+  grid-column: 1 / -1;
+}
+
+#form-jugador {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 16px;
+  align-items: end;
+}
+
+form > div {
+  min-width: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input,
+select {
+  display: block;
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+
+  background: var(--superficie);
+  color: var(--texto);
+
+  font: inherit;
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+input:hover,
+select:hover {
+  border-color: #94a3b8;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primario);
+  box-shadow: 0 0 0 3px rgb(29 78 216 / 15%);
+}
+
+input:disabled,
+select:disabled {
+  background: #f1f5f9;
+  color: var(--texto-secundario);
+  cursor: not-allowed;
+}
+
+/* Botones */
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+  padding: 10px 18px;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  background: var(--primario);
+  color: #ffffff;
+
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+
+  cursor: pointer;
+
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+button:hover:not(:disabled) {
+  background: var(--primario-hover);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--primario);
+  outline-offset: 3px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#btn-registrar,
+#btn-cancelar,
+#btn-salir {
+  border-color: var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+}
+
+#btn-registrar:hover:not(:disabled),
+#btn-cancelar:hover:not(:disabled),
+#btn-salir:hover:not(:disabled) {
+  border-color: #94a3b8;
+  background: #f1f5f9;
+}
+
+#btn-guardar {
+  grid-column: 1;
+}
+
+#btn-cancelar {
+  grid-column: 2;
+}
+
+/* Mensajes */
+
+#mensaje-jugador,
+#estado-listado {
+  color: var(--texto-secundario);
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+#mensaje-jugador:not(:empty) {
+  margin: 20px 0 0;
+  padding: 12px 16px;
+
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+
+  background: var(--primario-suave);
+  color: #1e3a8a;
+}
+
+#mensaje-jugador:empty {
+  display: none;
+}
+
+#estado-listado {
+  margin-bottom: 16px;
+}
+
+/* Tabla */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 15px 14px;
+  border-bottom: 1px solid var(--borde);
+  vertical-align: middle;
+}
+
+th {
+  background: #f8fafc;
+  color: var(--texto-secundario);
+
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+td {
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+th:last-child {
+  width: 200px;
+}
+
+td:last-child {
+  white-space: nowrap;
+}
+
+/* Primer botón de la fila: editar. */
+
+td button:first-of-type {
+  min-height: 40px;
+  padding: 8px 12px;
+
+  border-color: #bfdbfe;
+  background: var(--primario-suave);
+  color: var(--primario);
+}
+
+td button:first-of-type:hover:not(:disabled) {
+  background: #dbeafe;
+}
+
+/* Segundo botón de la fila: eliminar. */
+
+td button:last-of-type {
+  min-height: 40px;
+  margin-left: 4px;
+  padding: 8px 12px;
+
+  background: var(--peligro);
+  color: #ffffff;
+}
+
+td button:last-of-type:hover:not(:disabled) {
+  background: var(--peligro-hover);
+}
+
+/* Contenedor opcional para desplazamiento horizontal. */
+
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Pantallas pequeñas */
+
+@media (max-width: 700px) {
+  body {
+    width: min(100% - 24px, 1050px);
+    padding: 28px 0;
+  }
+
+  #acceso,
+  #panel {
+    padding: 22px 16px;
+  }
+
+  #form-jugador,
+  #form-acceso {
+    grid-template-columns: 1fr;
+  }
+
+  #btn-guardar,
+  #btn-cancelar {
+    grid-column: 1;
+  }
+
+  form button {
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 12px 10px;
+  }
+
+  table {
+    min-width: 560px;
+  }
+}
+
+/* Reduce transiciones si el usuario lo solicita. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
